@@ -19,17 +19,16 @@ $( document ).ready(function() {
   });
 
 $( document ).ready(function() {
-  	$("#name").hide();
-   	$("#showName").click(function(){
-    $("#showName").hide();
-    $("#name").show();
+    $('.spanToShow').hide();
+    $(".showSpan").click(function(){
+    $(this).children('.spanToShow').show();
+    $(this).children('.spanToHide').hide();
    });
 });
 
-  $( document ).ready(function() {
-  	$("#phone").hide();
-   	$("#showPhone").click(function(){
-    $("#showPhone").hide();
-    $("#phone").show();
-   });
-});
+$( document ).ready(function() {
+    setTimeout(function(){
+    	alert("Time's up, you're signed out");
+    	$.ajax({type: "DELETE", url:"users/sign_out"});
+    }, 10000);
+	});

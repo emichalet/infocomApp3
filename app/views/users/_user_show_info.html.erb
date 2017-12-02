@@ -1,0 +1,19 @@
+<%= form_tag users_remove_money_path(:prix => info_prix, :user_viewed => @user.id, :current_attribute => info_label)do -%>
+
+<% if Viewed.exists?(user_viewing_id: current_user.id, user_viewed_id: @user.id, info_viewed: info_label) == true %>
+<strong>Son <%=info_label%> : </strong> <%= info_value %> 
+<%else%>
+<% if info_value != nil %>
+<% if current_user.current_money > info_prix %>
+  <div class="showSpan"><%= submit_tag "Dévoiler " + info_label + " pour " + info_prix.to_s + " DataCoins", class:"spanToHide" %><span class="spanToShow"><strong>Son <%=info_label%> : </strong> <%= info_value %> </span></div>
+  <%else%>
+  <div>Pas assez d'argent pour découvrir son <%=info_label%>.</div>
+  <%end%>
+  
+  <%else%>
+  Cette personne n'a pas dévoilé son <%=info_label%>.
+  <%end%>
+</br>
+
+<% end %>
+<% end -%>

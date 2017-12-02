@@ -1,27 +1,13 @@
-<%= form_tag users_remove_money_path do -%>
-<% if current_user.admin == true %>
-<%= link_to 'Give him Data', users_addsome_money_url%>
-<%end%>
-<% if current_user.current_money > 9 %>
-  <div id="showName"><%= submit_tag 'Show name for 10 DataCoins' %></div>
-  <%else%>
-  <div>Not enough money to unlock name.</div>
-  <%end%>
-  
-  <span id="name"><strong>Name:</strong><%= @user.prenom %></span>
-<% end -%>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+That guy has <%=@user.current_money%> DataCoins.
+<br/>
+
+
 
 <br/>
 
-<%= form_tag users_remove_money_path do -%>
+<%= render partial: "user_show_info", locals: { info_value: @user.position_sexuelle_préférée, info_label: "position sexuelle préférée", info_prix: 7 } %>
 
-<% if current_user.current_money > 9 %>
-  <div id="showPhone"><%= submit_tag 'Show Phone for 10 DataCoins' %></div>
-  <%else%>
-  <div>Not enough money to unlock phone.</div>
-  <%end%>
-  <span id="phone"><strong>Numéro de téléphone:</strong><%= @user.numéro_de_téléphone %></span>
-<% end -%>
 
 
 <br/>

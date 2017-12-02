@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
   match '/users',   to: 'users#index',   via: 'get'
-  match '/users/addsome_money',   to: 'users#addsome_money',   via: 'get'
+  match '/users/:id/addsome_money',   to: 'users#addsome_money',   via: 'get', as: 'users_addsome_money'
   match '/users/remove_money',   to: 'users#remove_money',   via: 'post'
 
   get 'users/index'
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   resources :users do
 	collection do
 		get 'show'
-		devise_for :users, :controllers => { registrations: 'users/registrations' }
+		devise_for :users, :controllers => { registrations: 'users/registrations', sessions: 'users/sessions' }
 	end 
   end
 
